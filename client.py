@@ -1,4 +1,6 @@
 import requests
+import json
+from predictWord import Keyword_Spotting_Service
 
 # server url
 URL = "http://127.0.0.1:5000/predict"
@@ -11,11 +13,16 @@ FILE_PATH = "Test_Dataset/five/c8db14a8_nohash_0.wav"
 if __name__ == "__main__":
 
     # open files
-    file = open(FILE_PATH, "rb")
+    kss = Keyword_Spotting_Service()
+    word = kss.predict(FILE_PATH) # Causes error!
 
     # package stuff to send and perform POST request
-    values = {"file": (FILE_PATH, file, "audio/wav")}
-    response = requests.post(URL, files=values)
-    data = response.json()
-
-    print("Predicted keyword: {}".format(data["keyword"]))
+    # Edit down below when error fixed!
+    values = {'word': 'data'}
+    requests.post(
+        URL,
+        json=values
+    )
+    
+   
+    # print("Predicted keyword: {}".format(data["keyword"]))
