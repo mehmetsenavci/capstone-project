@@ -2,7 +2,7 @@ import librosa
 import tensorflow as tf
 import numpy as np
 
-SAVED_MODEL_PATH = "model.h5"
+SAVED_MODEL_PATH = "modelLarge.h5"
 SAMPLES_TO_CONSIDER = 22050
 
 class _Keyword_Spotting_Service:
@@ -12,11 +12,36 @@ class _Keyword_Spotting_Service:
 
     model = None
     _mapping = [
-        "five",
-        "three",
         "two",
+        "yes",
+        "zero",
+        "up",
+        "wow",
+        "stop",
+        "three",
+        "sheila",
+        "tree",
+        "seven",
+        "six",
+        "off",
+        "on",
         "one",
-        "four"
+        "right",
+        "left",
+        "house",
+        "nine",
+        "marvin",
+        "happy",
+        "no",
+        "four",
+        "go",
+        "five",
+        "eight",
+        "bed",
+        "cat",
+        "down",
+        "bird",
+        "dog"
     ]
     _instance = None
 
