@@ -73,7 +73,6 @@ class _Keyword_Spotting_Service:
         :return MFCCs (ndarray): 2-dim array with MFCC data of shape (# time steps, # coefficients)
         """
 
-
         # load audio file
         signal, sample_rate = librosa.load(file_path)
 
@@ -82,8 +81,8 @@ class _Keyword_Spotting_Service:
             signal = signal[:SAMPLES_TO_CONSIDER]
 
             # extract MFCCs
-            MFCCs = librosa.feature.mfcc(signal, sample_rate, n_mfcc=num_mfcc, n_fft=n_fft,
-                                         hop_length=hop_length)
+        MFCCs = librosa.feature.mfcc(signal, sample_rate, n_mfcc=num_mfcc, n_fft=n_fft,
+                                    hop_length=hop_length)
         return MFCCs.T
 
 
