@@ -68,17 +68,14 @@ if __name__ == "__main__":
     # Predicts word from the recorded wav file
     kss = Keyword_Spotting_Service()
     word = kss.predict('trimedAudio.wav')
+    print(word)
 
+"""
    # Sends post request to the server
     values = {'word': word}
-    requests.post(
+    requests.post(                                             # Comment this section while not testing with a web server
         URL,
         json=values
     )
 """
-    file = SoundFile('trimedAudio.wav', 'r+')
-    end = file.seek(0, SEEK_END)
-    file.write(np.array([2000]))
-    print(end)
-    file.close()
-"""
+

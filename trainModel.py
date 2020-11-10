@@ -4,12 +4,13 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
-DATA_PATH = "data.json"
-SAVED_MODEL_PATH = "new_model.h5"
+DATA_PATH = "_twoPhraseTest.json"
+SAVED_MODEL_PATH = "_twoPhraseTest.h5"
 EPOCHS = 40
 BATCH_SIZE = 32
 PATIENCE = 5
 LEARNING_RATE = 0.0001
+WORD_COUNT = 4
 
 
 def load_data(data_path):
@@ -90,7 +91,7 @@ def build_model(input_shape, loss="sparse_categorical_crossentropy", learning_ra
     tf.keras.layers.Dropout(0.3)
 
     # softmax output layer
-    model.add(tf.keras.layers.Dense(5, activation='softmax'))
+    model.add(tf.keras.layers.Dense(WORD_COUNT, activation='softmax'))
 
     optimiser = tf.optimizers.Adam(learning_rate=learning_rate)
 

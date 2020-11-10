@@ -3,12 +3,11 @@ import os
 import json
 import numpy as np
 from sklearn.model_selection import train_test_split
-import tensorflow.keras as keras
 
 
-DATASET_PATH = "/content/drive/My Drive/Dataset"
-JSON_PATH = "/content/drive/My Drive/data.json"
-SAVED_MODEL_PATH = "/content/drive/My Drive/model.h5"
+
+DATASET_PATH = "capstone_dataset/"
+JSON_PATH = "_twoPhraseTest.json"
 LEARNING_RATE = 0.0001
 EPOCHS = 40
 BATCH_SIZE = 32

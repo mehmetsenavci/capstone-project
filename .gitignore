@@ -1,2 +1,6 @@
 tensorflow-speech-recognition-challenge
 __pycache__
+googleTest.py
+*.json
+*.wav
+*.h5

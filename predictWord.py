@@ -2,7 +2,7 @@ import librosa
 import tensorflow as tf
 import numpy as np
 
-SAVED_MODEL_PATH = "modelLarge.h5"
+SAVED_MODEL_PATH = "_twoPhraseTest.h5"
 SAMPLES_TO_CONSIDER = 22050
 
 class _Keyword_Spotting_Service:
@@ -12,37 +12,10 @@ class _Keyword_Spotting_Service:
 
     model = None
     _mapping = [
-        "two",
-        "yes",
-        "zero",
-        "up",
-        "wow",
-        "stop",
-        "three",
-        "sheila",
-        "tree",
-        "seven",
-        "six",
-        "off",
-        "on",
-        "one",
-        "right",
-        "left",
-        "house",
-        "nine",
-        "marvin",
-        "happy",
-        "no",
-        "four",
-        "go",
-        "five",
-        "eight",
-        "bed",
-        "cat",
-        "down",
-        "bird",
-        "dog"
+        "fan on",
+        "light off"
     ]
+
     _instance = None
 
     def predict(self, file_path):
