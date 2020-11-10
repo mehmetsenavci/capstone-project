@@ -10,7 +10,7 @@ EPOCHS = 40
 BATCH_SIZE = 32
 PATIENCE = 5
 LEARNING_RATE = 0.0001
-WORD_COUNT = 4
+WORD_COUNT = 2
 
 
 def load_data(data_path):
