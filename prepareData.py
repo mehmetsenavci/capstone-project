@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 
 
 
-DATASET_PATH = "capstone_dataset/"
-JSON_PATH = "_twoPhraseTest.json"
+DATASET_PATH = "on-off/"
+JSON_PATH = "actions.json"
 LEARNING_RATE = 0.0001
 EPOCHS = 40
 BATCH_SIZE = 32

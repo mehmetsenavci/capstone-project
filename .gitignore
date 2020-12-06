@@ -4,3 +4,5 @@ googleTest.py
 *.json
 *.wav
 *.h5
+Results/
+obj/
