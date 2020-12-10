@@ -6,3 +6,4 @@ googleTest.py
 *.h5
 Results/
 obj/
+capstone_dataset
