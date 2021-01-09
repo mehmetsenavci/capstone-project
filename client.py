@@ -27,7 +27,7 @@ chunk = 1024
 FORMAT = pyaudio.paInt16
 channels = 1
 sample_rate = 16000 
-record_seconds = 5
+record_seconds = 3
 p = pyaudio.PyAudio()
 
 def recordVoice(FORMAT, channels, sample_rate, input, output, chunk):
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     
     while isContinue :
         fullPhrase = ""
-        print("#################\nFor LED 1: say 'one'\nFor LED 2: say 'two'\nFor LED 3: say 'three'\nFor Fan: say 'four'\n#################")
+        print("#################\nFor Lock: say 'zero'\nFor LED 1: say 'one'\nFor LED 2: say 'two'\nFor LED 3: say 'three'\nFor Fan: say 'four'\n#################")
         # Get device number
         print("#################\nWhat is the number of the device that you want to interact with?\n#################")
         input("Press ENTER to record  your voice...")
@@ -118,72 +118,41 @@ if __name__ == "__main__":
         fullPhrase += device + " "
         print(fullPhrase)
 
-        if(isFan(deviceNum)):
-            print("#################\nTo adjust fan speed say numbers between 0 and 4:\n0 turns off the fan\n4 is the max speed\n#################")
-            input("Press ENTER to record  your voice...")
-            recordVoice(FORMAT, channels, sample_rate, True, True, chunk)
-            trimAudio.trimAudio(1, 'rawAudio.wav')
-            fanSpeed = pn.predict('trimedAudio.wav')
-            
-            fanSpeedNum = numberToInt(fanSpeed)
-            print(fanSpeedNum)
-            
-            fullPhrase += fanSpeed 
-            print(fullPhrase)
-
-            """
-            # Send string request to server
-            values = {'word': fullPhrase}
-            requests.post(                                            
-                URL,
-                headers=headers,
-                json=values
-            )
-
-            # Send int request to server
-            values = {'device': deviceNum, 'action': actionNum}
-            requests.post(                                            
-                URL,
-                headers=headers,
-                json=values
-            )
-            """
-
         
-        else:
-            # Get action to perform
-            print("#################\nDo you want to turn the device on or off?\n#################")
-            input("Press ENTER to record  your voice...")
-            recordVoice(FORMAT, channels, sample_rate, True, True, chunk)
-            trimAudio.trimAudio(1, 'rawAudio.wav')
-            pa = Predict_Action()
-            action = pa.predict('trimedAudio.wav')
+        
+        # Get action to perform
+        print("#################\nDo you want to turn the device on or off?\n#################")
+        input("Press ENTER to record  your voice...")
+        recordVoice(FORMAT, channels, sample_rate, True, True, chunk)
+        trimAudio.trimAudio(1, 'rawAudio.wav')
+        pa = Predict_Action()
+        action = pa.predict('trimedAudio.wav')
 
-            actionNum = actionToInt(action)
-            print(actionNum)
+        actionNum = actionToInt(action)
+        print(actionNum)
 
-            fullPhrase += action
+        fullPhrase += action
 
-            print(deviceNum, actionNum)
-            print(fullPhrase)
+        print(deviceNum, actionNum)
+        print(fullPhrase)
 
-            """
-            # Send string request to server
-            values = {'word': fullPhrase}
-            requests.post(                                            
-                URL,
-                headers=headers,
-                json=values
-            )
+        """
+        # Send string request to server
+        values = {'word': fullPhrase}
+        requests.post(                                            
+            URL,
+            headers=headers,
+            json=values
+        )
 
-            # Send int request to server
-            values = {'device': deviceNum, 'action': actionNum}
-            requests.post(                                            
-                URL,
-                headers=headers,
-                json=values
-            )
-            """
+        """
+        # Send int request to server
+        values = {'device': deviceNum, 'action': actionNum}
+        requests.post(                                            
+            TEST_URL,
+            headers=headers,
+            json=values
+        )
         
         # Check if the user wants to continue with the process
         cntStr = input("Press Q to terminate the process, Press any key to continue interacting... PRESS ENTER after your input.\n")
